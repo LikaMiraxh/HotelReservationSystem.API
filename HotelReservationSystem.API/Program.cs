@@ -22,9 +22,9 @@ builder.Services.AddDbContext<HotelContext>(opt =>
 {
     var conStrBuilder = new SqlConnectionStringBuilder(builder.Configuration.GetConnectionString("myDb"));
 
-    conStrBuilder.UserID = builder.Configuration["userid"];
+    conStrBuilder.UserID = builder.Configuration.GetConnectionString("userid");
 
-    conStrBuilder.Password = builder.Configuration["password"];
+    conStrBuilder.Password = builder.Configuration.GetConnectionString("password");
 
     opt.UseSqlServer(conStrBuilder.ConnectionString);
 }
