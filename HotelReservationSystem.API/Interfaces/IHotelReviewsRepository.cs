@@ -11,5 +11,7 @@ namespace HotelReservationSystem.API.Interfaces
         public void CreateReview(Review review);
         public void UpdateReview(Review review);
         public void DeleteReview(int reviewId);
+
+        public IEnumerable<Review> GetAllReviews();
     }
 }

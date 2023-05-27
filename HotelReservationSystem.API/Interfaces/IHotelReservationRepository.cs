@@ -14,5 +14,9 @@ namespace HotelReservationSystem.API.Interfaces
         public void DeleteReservation(int reservationId);
 
         public (IEnumerable<Reservation> Reservations, PaginationMetadata PaginationMetadata) SearchReservations(DateTime? minDate, DateTime? maxDate, string? sortBy, bool ascending, int pageNumber, int pageSize);
+
+        public IEnumerable<Reservation> GetReservationsByRoomId(int roomId);
+
+        public IEnumerable<Reservation> GetAllReservations();
     }
 }
