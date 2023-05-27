@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using System.Text.Json;
 
 namespace HotelReservationSystem.API.Controllers
 {
@@ -58,6 +59,23 @@ namespace HotelReservationSystem.API.Controllers
             var reservationDto = _mapper.Map<ReservationDto>(reservation);
 
             return Ok(reservationDto);
+        }
+
+        [HttpGet("SearchReservations")]
+        [AllowAnonymous]
+        public ActionResult<IEnumerable<ReservationDto>> SearchReservations(DateTime? minDate, DateTime? maxDate, string? sortBy, bool ascending = true, int pageNumber = 1, int pageSize = 5)
+        {
+            var result = _reservationRepository.SearchReservations(minDate, maxDate, sortBy, ascending, pageNumber, pageSize);
+
+            if (!result.Reservations.Any())
+                return NotFound();
+
+            Response.Headers.Add("X-Pagination",
+                JsonSerializer.Serialize(result.PaginationMetadata));
+
+            var reservationDtos = _mapper.Map<IEnumerable<ReservationDto>>(result.Reservations);
+
+            return Ok(reservationDtos);
         }
 
         [HttpPost]
