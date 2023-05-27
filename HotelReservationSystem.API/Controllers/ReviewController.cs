@@ -32,7 +32,7 @@ namespace HotelReservationSystem.API.Controllers
             return Ok(reviewDtos);
         }
 
-        [HttpGet]
+        [HttpGet("room/{roomId}")]
         [AllowAnonymous]
         public ActionResult<IEnumerable<ReviewDto>> GetReviewsByRoomId(int roomId)
         {
