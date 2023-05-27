@@ -16,6 +16,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddTransient<IHotelCustomerRepository, HotelCustomerRepository>();
 builder.Services.AddTransient<IHotelReservationRepository, HotelReservationRepository>();
 builder.Services.AddTransient<IHotelReviewsRepository, HotelReviewsRepository>();

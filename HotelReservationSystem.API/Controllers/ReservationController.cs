@@ -36,7 +36,7 @@ namespace HotelReservationSystem.API.Controllers
             return Ok(reservationDtos);
         }
 
-        [HttpGet]
+        [HttpGet("customer/{customerId}")]
         [Authorize(Roles = "user,Administrator")]
         public ActionResult<IEnumerable<ReservationDto>> GetReservationsByCustomerId(int customerId)
         {
