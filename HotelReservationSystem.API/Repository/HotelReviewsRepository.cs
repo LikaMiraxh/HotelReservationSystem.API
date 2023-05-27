@@ -50,5 +50,10 @@ namespace HotelReservationSystem.API.Repository
             _context.Reviews.Update(review);
             SaveChanges();
         }
+
+        public IEnumerable<Review> GetAllReviews()
+        {
+            return _context.Reviews.ToList();
+        }
     }
 }

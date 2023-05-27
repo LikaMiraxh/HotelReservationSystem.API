@@ -90,5 +90,17 @@ namespace HotelReservationSystem.API.Repository
             _context.Reservations.Update(reservation);
             SaveChanges();
         }
+
+        public IEnumerable<Reservation> GetReservationsByRoomId(int roomId)
+        {
+            return _context.Reservations
+                .Where(r => r.RoomId == roomId)
+                .ToList();
+        }
+
+        public IEnumerable<Reservation> GetAllReservations()
+        {
+            return _context.Reservations.ToList();
+        }
     }
 }

@@ -40,7 +40,7 @@ namespace HotelReservationSystem.API.Repository
             return rooms;
         }
 
-        public (IEnumerable<Room>, PaginationMetadata) SearchRooms(int? minPrice, int? maxPrice, string? roomType, string? sortBy, bool ascending, int pageNumber, int pageSize)
+        public (IEnumerable<Room>, PaginationMetadata) SearchRooms(int? minPrice, int? maxPrice, string? Type, string? sortBy, bool ascending, int pageNumber, int pageSize)
         {
             var rooms = _context.Rooms as IQueryable<Room>;
 
@@ -54,9 +54,9 @@ namespace HotelReservationSystem.API.Repository
                 rooms = rooms.Where(r => r.Price <= maxPrice);
             }
 
-            if (!string.IsNullOrEmpty(roomType))
+            if (!string.IsNullOrEmpty(Type))
             {
-                rooms = rooms.Where(r => r.Type == roomType);
+                rooms = rooms.Where(r => r.Type == Type);
             }
 
             switch (sortBy)
