@@ -1,4 +1,4 @@
-# Hotel Reservation API
+# Hotel Reservation System API
 
 This API provides a comprehensive system to manage a hotel, offering a wide range of endpoints to handle customers, rooms, reservations, reviews, and authentication.
 
